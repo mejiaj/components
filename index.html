@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Native web components</title>
 </head>
+
 <body>
   <button type="button" is="jm-button">Hello</button>
   <!-- <jm-button></jm-button> -->
+  <img is="bigger-img" src="https://placekitten.com/100/100" alt="A kitten">
+
   <greeting-message name="James"></greeting-message>
 
   <script>
@@ -17,6 +21,8 @@
   </script>
 
   <script src="./components/button/index.js" type="module"></script>
+  <script src="./components/image/index.js" type="module"></script>
   <script src="./components/greeting/index.js" type="module"></script>
 </body>
+
 </html>
