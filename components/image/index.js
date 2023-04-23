@@ -1,12 +1,12 @@
 customElements.define(
-  "bigger-img",
+  "smaller-img",
   class extends HTMLImageElement {
     // Default size, if not specified.
-    constructor(width = 100, height = 100) {
+    constructor() {
       super();
 
-      this.width = width * 5;
-      this.height = height * 5;
+      this.width = this.width / 2;
+      this.height = this.width;
     }
   },
   { extends: "img" }
