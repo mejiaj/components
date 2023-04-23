@@ -9,11 +9,39 @@
 </head>
 
 <body>
-  <button type="button" is="jm-button">Hello</button>
-  <!-- <jm-button></jm-button> -->
+  <h1>Components</h1>
+
+  <h2>Button</h2>
+  <button type="button" is="jm-button">A jm-button</button>
+  <button type="button">A jm-button</button>
+  <jm-button></jm-button>
+
+  <h2>Buttons with class styles</h2>
+  <button type="button" class="btn btn--primary">A regular button</button>
+  <button type="button" class="btn btn--primary">A regular button</button>
+  <jm-button></jm-button>
+
+  <hr>
+
+  <h2>Image</h2>
   <img is="bigger-img" src="https://placekitten.com/100/100" alt="A kitten">
 
   <greeting-message name="James"></greeting-message>
+
+  <style>
+    button[is="jm-button"] {
+      background-color: seagreen;
+      color: white;
+    }
+
+    .btn {
+      outline: none;
+      cursor: pointer;
+      border: none;
+      padding: 0.25rem 0.5rem;
+    }
+
+  </style>
 
   <script>
     // const greeting = document.querySelector("greeting-message");
