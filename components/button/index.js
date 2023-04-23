@@ -1,12 +1,15 @@
-class JmButton extends HTMLElement {
+// https://html.spec.whatwg.org/multipage/indices.html#element-interfaces
+class JmButton extends HTMLButtonElement {
   constructor() {
     super();
+    // Add event listeners here.
+    this.addEventListener("click", (e) => console.log(this));
   }
   connectedCallback() {
-    this.innerHTML = `<button type="button">Custom button component</button>`
+    this.textContent = `Custom button component`;
   }
 }
 
-window.customElements.define("jm-button", JmButton);
-
-export default JmButton;
+if ("customElements" in window) {
+  customElements.define("jm-button", JmButton, { extends: "button" });
+}
