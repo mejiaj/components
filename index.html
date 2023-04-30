@@ -12,14 +12,21 @@
   <h1>Components</h1>
 
   <h2>Button</h2>
-  <button type="button" is="jm-button">A jm-button</button>
-  <button type="button">A jm-button</button>
-  <jm-button></jm-button>
+  <button is="jm-button">A jm-button</button>
+  <jm-button>A jm-button</jm-button>
+  <!-- <jm-button type="submit">Component with submit</jm-button> -->
+  <button>A regular button</button>
+
+  <hr>
+  <button is="jm-button">Button without type</button>
+  <jm-button>Button component</jm-button>
+  <button>A regular button</button>
+  <hr>
 
   <h2>Buttons with class styles</h2>
-  <button type="button" class="btn btn--primary">A regular button</button>
-  <button type="button" class="btn btn--primary">A regular button</button>
-  <jm-button></jm-button>
+  <button is="jm-button" class="btn btn--primary">Styled button component</button>
+  <jm-button>Testing</jm-button>
+  <button class="btn btn--primary">Standard button</button>
 
   <hr>
 
@@ -29,17 +36,32 @@
   <greeting-message name="James"></greeting-message>
 
   <style>
-    button[is="jm-button"] {
-      background-color: seagreen;
+    /* Style the element */
+    jm-button {
+      background-color: teal;
       color: white;
+      padding: 0.25rem;
     }
 
-    .btn {
-      outline: none;
-      cursor: pointer;
-      border: none;
-      padding: 0.25rem 0.5rem;
+    /* Style by type of component */
+    [is="jm-button"] {
+      background-color: seagreen;
+      color: white;
+      padding: 0.25rem;
     }
+
+    /* Style by class */
+    /* .jm-button {
+      all: unset;
+      background-color: orange;
+      font-family: sans-serif;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1;
+      font-size: 1rem;
+      padding: 0.25rem;
+    } */
 
   </style>
 
