@@ -27,15 +27,15 @@ class JmButton extends HTMLElement {
     /*
      * 3.2. We can also set properties if we need to.
      */
-    if (!this.hasAttribute("type")) {
-      this.setAttribute("type", "button");
-    }
+    // if (!this.hasAttribute("type")) {
+    //   this.setAttribute("type", "button");
+    // }
 
     /*
      * 3.3. We can also set a default base class if we need to.
      */
     //
-    this.classList.add("jm-button");
+    // this.classList.add("jm-button");
   }
 
   /*

@@ -7,3 +7,9 @@ body {
   font-size: var(--font-size-4);
   padding: var(--size-fluid-3);
 }
+
+hr {
+  border-color: var(--indigo-5);
+  margin-top: var(--size-8);
+  margin-bottom: var(--size-8);
+}

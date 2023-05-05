@@ -13,21 +13,13 @@
   <h1>Components</h1>
 
   <h2>Button</h2>
+  <p>
+    Buttons are missing attributes like "type" and classes for styling.
+  </p>
   <button is="jm-button">A jm-button</button>
   <jm-button>A jm-button</jm-button>
   <!-- <jm-button type="submit">Component with submit</jm-button> -->
   <button>A regular button</button>
-
-  <hr>
-  <button is="jm-button">Button without type</button>
-  <jm-button>Button component</jm-button>
-  <button>A regular button</button>
-  <hr>
-
-  <h2>Buttons with class styles</h2>
-  <button is="jm-button" class="btn btn--primary">Styled button component</button>
-  <jm-button>Testing</jm-button>
-  <button class="btn btn--primary">Standard button</button>
 
   <hr>
 
@@ -52,7 +44,7 @@
     }
 
     /* Style by class */
-    /* .jm-button {
+    .jm-button {
       all: unset;
       background: var(--gradient-4);
       font-weight: var(--font-weight-4);
@@ -67,7 +59,7 @@
     .jm-button:hover,
     .jm-button:active {
       background: var(--gradient-14);
-    } */
+    }
 
   </style>
 
