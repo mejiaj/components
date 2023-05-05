@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Native web components</title>
+  <link rel="stylesheet" href="./assets/styles/index.css">
 </head>
 
 <body>
@@ -38,14 +39,14 @@
   <style>
     /* Style the element */
     jm-button {
-      background-color: teal;
+      background-color: var(--teal-8);
       color: white;
       padding: 0.25rem;
     }
 
     /* Style by type of component */
     [is="jm-button"] {
-      background-color: seagreen;
+      background-color: var(--violet-8);
       color: white;
       padding: 0.25rem;
     }
@@ -53,14 +54,19 @@
     /* Style by class */
     /* .jm-button {
       all: unset;
-      background-color: orange;
-      font-family: sans-serif;
-      color: white;
+      background: var(--gradient-4);
+      font-weight: var(--font-weight-4);
+      color: black;
       cursor: pointer;
       display: inline-block;
       line-height: 1;
       font-size: 1rem;
-      padding: 0.25rem;
+      padding: var(--size-2);
+    }
+
+    .jm-button:hover,
+    .jm-button:active {
+      background: var(--gradient-14);
     } */
 
   </style>
