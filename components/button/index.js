@@ -39,15 +39,36 @@ class JmButton extends HTMLElement {
   }
 
   /*
+   * Create a list of attributes to observe.
+   */
+  // static get observedAttributes() {}
+
+  /*
    * 4. Runs every time element is appended or moved in DOM.
    */
   connectedCallback() {
     // this.textContent = `Custom button component`;
   }
+
+  /*
+   *
+   * Other lifecycle methods
+   * =======================
+   *
+   * disconnectedCallback()     - Component removed from DOM.
+   *
+   * adoptedCallback()          - Component is moved to an iframe.
+   *                              When adopted, constructor() won't be called.
+   *
+   * attributeChangedCallback() - An attribute is added, removed, or changed.
+   *
+   */
 }
 
 if ("customElements" in window) {
+  // !
   // ! Illegal constructor: we didn't extend button element.
+  // !
   customElements.define("jm-button", JmButton);
   // customElements.define("jm-button", JmButton, { extends: "button" });
 }
