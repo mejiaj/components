@@ -7,10 +7,10 @@
 // !
 // ! Otherwise we're going to create an element, but we won't have access
 // ! to any button properties and functionality.
-// class JmButton extends HTMLButtonElement {
-class JmButton extends HTMLElement {
+// ! class JmButton extends HTMLElement {
+class JmButton extends HTMLButtonElement {
   /*
-   * 3. Every component needs a constructor.
+   * 2. Every component needs a constructor.
    *
    * Constructor runs when element is created, but before it's
    * injected into the DOM.
@@ -19,23 +19,25 @@ class JmButton extends HTMLElement {
    */
   constructor() {
     /*
-     * 3.1. We call super to access properties with `this`.
+     * 2.1. We call super to access properties with `this`.
      */
     super();
     this.addEventListener("click", (e) => console.log(this));
 
     /*
-     * 3.2. We can also set properties if we need to.
+     * 2.2. We can also set properties if we need to.
      */
-    // if (!this.hasAttribute("type")) {
-    //   this.setAttribute("type", "button");
-    // }
+    if (!this.hasAttribute("type")) {
+      // Set some properties for custom button elements; ex: <jm-button>
+      this.setAttribute("type", "button");
+      this.setAttribute("tabindex", "1");
+    }
 
     /*
-     * 3.3. We can also set a default base class if we need to.
+     * 2.3. We can also set a default base class if we need to.
      */
     //
-    // this.classList.add("jm-button");
+    this.classList.add("jm-button");
   }
 
   /*
@@ -44,7 +46,7 @@ class JmButton extends HTMLElement {
   // static get observedAttributes() {}
 
   /*
-   * 4. Runs every time element is appended or moved in DOM.
+   * 3. Runs every time element is appended or moved in DOM.
    */
   connectedCallback() {
     // this.textContent = `Custom button component`;
@@ -56,19 +58,14 @@ class JmButton extends HTMLElement {
    * =======================
    *
    * disconnectedCallback()     - Component removed from DOM.
-   *
    * adoptedCallback()          - Component is moved to an iframe.
-   *                              When adopted, constructor() won't be called.
-   *
    * attributeChangedCallback() - An attribute is added, removed, or changed.
    *
    */
 }
 
 if ("customElements" in window) {
-  // !
-  // ! Illegal constructor: we didn't extend button element.
-  // !
-  customElements.define("jm-button", JmButton);
-  // customElements.define("jm-button", JmButton, { extends: "button" });
+  // ! 2. Illegal constructor: we didn't extend button element.
+  // ! customElements.define("jm-button", JmButton);
+  customElements.define("jm-button", JmButton, { extends: "button" });
 }
