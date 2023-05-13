@@ -1,0 +1,59 @@
+@import "https://unpkg.com/open-props";
+
+.wrapper {
+  background: var(--cyan-1);
+  border: 1px solid var(--cyan-2);
+  border-left: 8px solid var(--cyan-2);
+  grid-template-columns: 2ex 1fr;
+  column-gap: var(--size-2);
+  padding: var(--size-6);
+  padding-left: var(--size-9);
+}
+
+/* This won't work. */
+.wrapper h4 {
+  background: green;
+  margin: 0;
+  outline: 2px solid red;
+}
+
+/* Neither will trying to target element. */
+h4 {
+  font-family: monospace;
+}
+
+
+/* But this will. */
+::slotted(h4) {
+  margin-top: var(--size-2) !important;
+  margin-bottom: 0;
+}
+
+/* We can even set styles on all slotted elements */
+::slotted(*) {
+  font-weight: var(--font-weight-2);
+  font-size: var(--font-size-fluid-1);
+}
+
+/* We can even add a pseudoelement. */
+::slotted(h4)::before {
+  content: "⚠️";
+  display: inline-flex;
+  text-indent: -3.5ex;
+}
+
+/* Can we style with a class? */
+/* NOPE */
+/* .body {
+  outline: 2px solid red;
+} */
+
+/* This will work. */
+/* ::slotted(div) {
+  outline: 4px dotted teal;
+} */
+
+/* But again, we can't nest. */
+/* ::slotted(div p) {
+  outline: 4px dotted orange;
+} */
