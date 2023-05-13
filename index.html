@@ -21,6 +21,16 @@
   <!-- <jm-button type="submit">Component with submit</jm-button> -->
   <button>A regular button</button>
 
+  <p>
+    I've used the <code>constructor()</code> method to add <code>type</code> and <code>tabindex</code> for custom button
+    elements, ex: <code>&lt;jm-button&gt;&lt;/jm-button&gt;</code>
+  </p>
+
+  <h3>Styling</h3>
+  <p>
+    Currently buttons are being styled by CSS at the bottom of this template.
+  </p>
+
   <hr>
 
   <h2>Image</h2>
@@ -61,6 +71,9 @@
       background: var(--gradient-14);
     }
 
+    .jm-button:focus {
+      outline: var(--size-1) solid var(--teal-4);
+    }
   </style>
 
   <script>
