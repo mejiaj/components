@@ -9,6 +9,7 @@
 /*
  *
  * 1. Create the inner template.
+  ?   Note: Slots can **only** be top-level.
  *
  */
 const template = document.createElement("template");
@@ -79,9 +80,11 @@ template.innerHTML = `
   </div>
 `;
 
-const JmAlertStylesheet = document.createElement("link");
-JmAlertStylesheet.setAttribute("rel", "stylesheet");
-JmAlertStylesheet.setAttribute("href", "./components/alert/index.css");
+// 9. Creating stylesheet outside will cause some weird effects.
+//
+// const JmAlertStylesheet = document.createElement("link");
+// JmAlertStylesheet.setAttribute("rel", "stylesheet");
+// JmAlertStylesheet.setAttribute("href", "./components/alert/index.css");
 
 class JmAlert extends HTMLElement {
   constructor() {
@@ -92,6 +95,12 @@ class JmAlert extends HTMLElement {
     /*
      *
      * 2. Open mode lets us access the shadow DOM using JS.
+     *
+     *    Shadow DOM rules:
+     *    1. IDs must be unique ONLY inside that instance.
+     *    2. Can't target inside shadow DOM elements with other scripts.
+     *    3. Styles applied from shadow tree, not DOM. This one can be weird
+     *       because CSS inheritance still applies.
      *
      */
     this.attachShadow({ mode: "open" });
@@ -124,6 +133,15 @@ class JmAlert extends HTMLElement {
     //   }
     // `;
     // alertShadowDom.appendChild(rootStyles);
+
+    /*
+     *
+     * 10. If we create inside component class, we'll see that styling issue fixed.
+     *
+     */
+    const JmAlertStylesheet = document.createElement("link");
+    JmAlertStylesheet.setAttribute("rel", "stylesheet");
+    JmAlertStylesheet.setAttribute("href", "./components/alert/index.css");
 
     /*
      *

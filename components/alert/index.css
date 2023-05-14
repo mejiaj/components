@@ -25,6 +25,7 @@ h4 {
 
 /* But this will. */
 ::slotted(h4) {
+  font-weight: var(--font-weight-6);
   margin-top: var(--size-2) !important;
   margin-bottom: 0;
 }
@@ -57,3 +58,15 @@ h4 {
 /* ::slotted(div p) {
   outline: 4px dotted orange;
 } */
+
+/* ==========================================================================
+   Variants
+   ========================================================================== */
+:host([success]) .wrapper {
+  background-color: var(--green-1);
+  border-color: var(--green-2);
+}
+
+:host([success]) ::slotted(h4)::before {
+  content: "✅";
+}
