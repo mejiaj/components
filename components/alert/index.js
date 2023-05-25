@@ -8,7 +8,7 @@
 
 /*
  *
- * 1. Create the inner template.
+ * 1. Create the inner template. Templates **don't** render in the DOM.
   ?   Note: Slots can **only** be top-level.
  *
  */
