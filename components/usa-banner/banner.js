@@ -1,4 +1,89 @@
-const templateString = /**html**/ `
+const content = {
+  en: {
+    // ? Using "default" here requires us to map "gov" --> "default".
+    gov: {
+      banner: {
+        id: "gov-banner-default",
+        text: "An official website of the United States government",
+        action: "Here’s how you know",
+        aria_label: "Official website of the United States government",
+      },
+      domain: {
+        heading: "Official websites use .gov",
+        text: "A <strong>.gov</strong> website belongs to an official government organization in the United States.",
+      },
+      https: {
+        heading: "Secure .gov websites use HTTPS",
+        pretext: "A <strong>lock</strong>",
+        posttext:
+          "or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.",
+      },
+    },
+    mil: {
+      banner: {
+        id: "gov-banner-dot-mil",
+        text: "An official website of the United States government",
+        action: "Here’s how you know",
+        aria_label: "Official website of the United States government,",
+      },
+      domain: {
+        heading: "Official websites use .mil",
+        text: "A <strong>.mil</strong> website belongs to an official U.S. Department of Defense organization.",
+      },
+      https: {
+        heading: "Secure .mil websites use HTTPS",
+        pretext: "A <strong>lock</strong>",
+        posttext:
+          "or <strong>https://</strong> means you’ve safely connected to the .mil website. Share sensitive information only on official, secure websites.",
+      },
+    },
+  },
+  es: {
+    gov: {
+      banner: {
+        id: "gov-banner-lang-es",
+        text: "Un sitio oficial del Gobierno de Estados Unidos",
+        action: "Así es como usted puede verificarlo",
+        aria_label: "Un sitio oficial del Gobierno de Estados Unidos",
+      },
+      domain: {
+        heading: "Los sitios web oficiales usan .gov",
+        text: "Un sitio web <strong>.gov</strong> pertenece a una organización oficial del Gobierno de Estados Unidos.",
+      },
+      https: {
+        heading: "Los sitios web seguros .gov usan HTTPS",
+        pretext: "Un <strong>candado</strong>",
+        posttext:
+          "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .gov.  Comparta información sensible sólo en sitios web oficiales y seguros.",
+      },
+    },
+    mil: {
+      banner: {
+        id: "gov-banner-dot-mil-lang-es",
+        text: "Un sitio oficial del Gobierno de Estados Unidos",
+        action: "Así es como usted puede verificarlo",
+        aria_label: "Un sitio oficial del Gobierno de Estados Unidos,",
+      },
+      domain: {
+        heading: "Los sitios web oficiales usan .mil",
+        text: "Un sitio web <strong>.mil</strong> pertenece a una organización oficial del Departamento de Defensa de EE. UU.",
+      },
+      https: {
+        heading: "Los sitios web seguros .mil usan HTTPS",
+        pretext: "Un <strong>candado</strong>",
+        posttext:
+          "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .mil.  Comparta información sensible sólo en sitios web oficiales y seguros.",
+      },
+    },
+  },
+};
+
+const templateString = (data) => {
+  // Get the data object and destructure.
+  const { banner, domain, https } = data;
+
+  // Create the template with passed data.
+  /**html**/ return `
   <section
     class="usa-banner"
     aria-label="Official website of the United States government"
@@ -15,22 +100,12 @@ const templateString = /**html**/ `
             />
           </div>
           <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
-              <p class="usa-banner__header-text">
-                <template data-name="header-text" data-locale="en">
-                    An official website of the United States government
-                </template>
-                <template data-name="header-text" data-locale="es">
-                    Un sitio oficial del Gobierno de Estados Unidos
-                </template>
-              </p>
-              <p class="usa-banner__header-action">
-                <template data-name="header-action" data-locale="en">
-                  Here’s how you know
-                </template>
-                <template data-name="header-action" data-locale="es">
-                  Así es como usted puede verificarlo
-                </template>
-              </p>
+            <p class="usa-banner__header-text">
+              ${banner.text}
+            </p>
+            <p class="usa-banner__header-action">
+              ${banner.action}
+            </p>
           </div>
           <button
             type="button"
@@ -38,8 +113,8 @@ const templateString = /**html**/ `
             aria-expanded="false"
             aria-controls="gov-banner-default-default"
           >
-            <!-- Ugly spacing so chevron icon doesn't go to next line. -->
-            <span class="usa-banner__button-text"><template data-name="button-text" data-locale="en">Here’s how you know</template><template data-name="button-text" data-locale="es">Así es como usted puede verificarlo</template></span>
+            <!-- Must be inline so chevron icon doesn't go to next line. -->
+            <span class="usa-banner__button-text">${banner.action}</span>
           </button>
         </div>
       </header>
@@ -58,22 +133,8 @@ const templateString = /**html**/ `
             />
             <div class="usa-media-block__body">
               <p>
-                <template data-name="guidance-body" data-locale="en" data-tld="gov">
-                  <strong>Official websites use .gov</strong><br />A
-                  <strong>.gov</strong> website belongs to an official government
-                  organization in the United States.
-                </template>
-                <template data-name="guidance-body" data-locale="es" data-tld="gov">
-                  <strong>Los sitios web oficiales usan .gov</strong><br /> oficial del Gobierno de Estados Unidos.
-                </template>
-                <template data-name="guidance-body" data-locale="en" data-tld="mil">
-                  <strong>Official websites use .mil</strong><br />A
-                  <strong>.mil</strong> website belongs to an official U.S. Department of Defense organization.
-                </template>
-                <template data-name="guidance-body" data-locale="es" data-tld="mil">
-                  <strong>Los sitios web oficiales usan .mil</strong><br />
-                  Un sitio web <strong>.mil</strong> pertenece a una organización oficial del Departamento de Defensa de EE. UU.
-                </template>
+                ${domain.heading}
+                ${domain.text}
               </p>
             </div>
           </div>
@@ -86,23 +147,9 @@ const templateString = /**html**/ `
               aria-hidden="true"
             />
             <div class="usa-media-block__body">
-              <p>
-                <template data-name="guidance-icon-body" data-locale="es" data-tld="gov">
-                  <strong>Los sitios web seguros .gov usan HTTPS</strong><br />Un
-                  <strong>candado</strong> (
-                </template>
-                <template data-name="guidance-icon-body" data-locale="es" data-tld="mil">
-                  <strong>Los sitios web seguros .mil usan HTTPS</strong><br />Un
-                  <strong>candado</strong> (
-                </template>
-                <template data-name="guidance-icon-body" data-locale="en" data-tld="gov">
-                  <strong>Secure .gov websites use HTTPS</strong><br />A
-                  <strong>lock</strong> (
-                </template>
-                <template data-name="guidance-icon-body" data-locale="en" data-tld="mil">
-                  <strong>Secure .mil websites use HTTPS</strong><br />A
-                  <strong>lock</strong> (
-                </template>
+            <p>
+              ${https.heading}
+              ${https.pretext}
                 <span class="icon-lock">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -122,13 +169,7 @@ const templateString = /**html**/ `
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0   1-4   4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26   0zm0  8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6. 075-4.  925-11-11-11z"/>
                   </svg>
                 </span>
-                <template data-name="guidance-icon-body" data-locale="es" data-tld="gov">) o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.
-                </template>
-                <template data-name="guidance-icon-body" data-locale="es" data-tld="mil">) o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .mil. Comparta información sensible sólo en sitios web oficiales y seguros.
-                </template>
-                <template data-name="guidance-icon-body" data-locale="en" data-tld="gov">) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
-                </template>
-                <template data-name="guidance-icon-body" data-locale="en" data-tld="mil">) or <strong>https://</strong> means you’ve safely connected to the .mil website. Share sensitive information only on official, secure websites.</template>
+                ${https.posttext}
               </p>
             </div>
           </div>
@@ -137,12 +178,14 @@ const templateString = /**html**/ `
     </div>
   </section>
 `;
+};
 
 class BannerComponent extends HTMLElement {
   constructor() {
     super();
+
     this.template = document.createElement("template");
-    this.template.innerHTML = templateString;
+    this.template.innerHTML = templateString(content.en.gov);
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
@@ -151,39 +194,63 @@ class BannerComponent extends HTMLElement {
     }
   }
 
+  connectedCallback() {
+    /**
+     *
+     * ! ShadowDOM experiment
+     * ! Markup still showed up via shadow root and styles were lost.
+     *
+     */
+    // this.attachShadow({ mode: "open" });
+    // const bannerShadowDOM = this.shadowRoot;
+    // this.template.innerHTML = templateString(content["en"]["gov"]);
+    // bannerShadowDOM.appendChild(this.template.content.cloneNode(true));
+
+    this.render();
+  }
+
   render() {
-    const locale = this.getAttribute("locale");
-    const tld = this.getAttribute("tld");
-    const content = this.template.content.cloneNode(true);
-    this.innerHTML = "";
-    this.append(content);
-    const tldAndLocaleTemplates = Array.from(
-      this.querySelectorAll(
-        `template[data-locale="${locale}"][data-tld="${tld}"]`
-      )
-    );
-    tldAndLocaleTemplates.forEach((template) => {
-      template.outerHTML = template.innerHTML;
-    });
-    const invalidTldAndLocaleTemplates = Array.from(
-      this.querySelectorAll(`template[data-locale][data-tld]`)
-    );
-    invalidTldAndLocaleTemplates.forEach((template) => template.remove());
-    const tldTemplates = Array.from(
-      this.querySelectorAll(`template[data-tld="${tld}"]`)
-    );
-    tldTemplates.forEach((tldTemplate) => {
-      tldTemplate.outerHTML = tldTemplate.innerHTML;
-    });
-    const localeTemplates = Array.from(
-      this.querySelectorAll(`template[data-locale="${locale}"]`)
-    );
-    localeTemplates.forEach((localeTemplate) => {
-      localeTemplate.outerHTML = localeTemplate.innerHTML;
-    });
-    Array.from(this.querySelectorAll("template")).forEach((template) =>
-      template.remove()
-    );
+    // ? Set defaults and/or fallback if attributes aren't set.
+    const locale = this.getAttribute("locale") || "en";
+    const tld = this.getAttribute("tld") || "gov";
+
+    // const content2 = this.template.content.cloneNode(true);
+    // this.innerHTML = "";
+    // this.append(content2);
+
+    // ? Set HTML dynamically.
+    this.innerHTML = templateString(content[locale][tld]);
+
+    // ? Simplified markup/template.
+    // ? We're generating template content dynamically, so no need for
+    // ? swapping smaller templates.
+    // const tldAndLocaleTemplates = Array.from(
+    //   this.querySelectorAll(
+    //     `template[data-locale="${locale}"][data-tld="${tld}"]`
+    //   )
+    // );
+    // tldAndLocaleTemplates.forEach((template) => {
+    //   template.outerHTML = template.innerHTML;
+    // });
+    // const invalidTldAndLocaleTemplates = Array.from(
+    //   this.querySelectorAll(`template[data-locale][data-tld]`)
+    // );
+    // invalidTldAndLocaleTemplates.forEach((template) => template.remove());
+    // const tldTemplates = Array.from(
+    //   this.querySelectorAll(`template[data-tld="${tld}"]`)
+    // );
+    // tldTemplates.forEach((tldTemplate) => {
+    //   tldTemplate.outerHTML = tldTemplate.innerHTML;
+    // });
+    // const localeTemplates = Array.from(
+    //   this.querySelectorAll(`template[data-locale="${locale}"]`)
+    // );
+    // localeTemplates.forEach((localeTemplate) => {
+    //   localeTemplate.outerHTML = localeTemplate.innerHTML;
+    // });
+    // Array.from(this.querySelectorAll("template")).forEach((template) =>
+    //   template.remove()
+    // );
   }
 
   static get observedAttributes() {
