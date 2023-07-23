@@ -44,6 +44,21 @@ class AppDrawer extends HTMLElement {
     }
   }
 
+  /**
+   * Only called for the disabled & open attributes from `observedAttributes`.
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // ? Drawer is disabled, update keyboard screen reader behavior.
+    if (this.disabled) {
+      this.setAttribute("tabindex", "-1");
+      this.setAttribute("aria-disabled", "true");
+    } else {
+      this.setAttribute("tabindex", "0");
+      this.setAttribute("aria-disabled", "false");
+    }
+    // @TODO: also react to the `open` attribute changing.
+  }
+
   constructor() {
     super();
 
