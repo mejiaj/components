@@ -78,6 +78,7 @@ const content = {
   },
 };
 
+// @TODO: Check duplicate slot name `banner-action`.
 const templateString = (data) => {
   // Get the data object and destructure.
   const { banner, domain, https } = data;
@@ -101,10 +102,10 @@ const templateString = (data) => {
           </div>
           <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
             <p class="usa-banner__header-text">
-              ${banner.text}
+              <slot name="banner-header-text">${banner.text}</slot>
             </p>
             <p class="usa-banner__header-action">
-              ${banner.action}
+              <slot name="banner-action">${banner.action}</slot>
             </p>
           </div>
           <button
@@ -114,7 +115,9 @@ const templateString = (data) => {
             aria-controls="gov-banner-default-default"
           >
             <!-- Must be inline so chevron icon doesn't go to next line. -->
-            <span class="usa-banner__button-text">${banner.action}</span>
+            <span class="usa-banner__button-text">
+              <slot name="banner-action">${banner.action}</slot>
+            </span>
           </button>
         </div>
       </header>
@@ -133,8 +136,8 @@ const templateString = (data) => {
             />
             <div class="usa-media-block__body">
               <p>
-                ${domain.heading}
-                ${domain.text}
+                <slot name="banner-domain-heading">${domain.heading}</slot>
+                <slot name="banner-domain-text">${domain.text}</slot>
               </p>
             </div>
           </div>
@@ -148,8 +151,8 @@ const templateString = (data) => {
             />
             <div class="usa-media-block__body">
             <p>
-              ${https.heading}
-              ${https.pretext}
+              <slot name="banner-https-heading">${https.heading}</slot>
+              <slot name="banner-https-text">${https.pretext}</slot>
                 <span class="icon-lock">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -169,13 +172,14 @@ const templateString = (data) => {
                       d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0   1-4   4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26   0zm0  8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6. 075-4.  925-11-11-11z"/>
                   </svg>
                 </span>
-                ${https.posttext}
+                <slot name="banner-https-post-text">${https.posttext}</slot>
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <slot></slot>
   </section>
 `;
 };
@@ -201,10 +205,10 @@ class BannerComponent extends HTMLElement {
      * ! Markup still showed up via shadow root and styles were lost.
      *
      */
-    // this.attachShadow({ mode: "open" });
-    // const bannerShadowDOM = this.shadowRoot;
-    // this.template.innerHTML = templateString(content["en"]["gov"]);
-    // bannerShadowDOM.appendChild(this.template.content.cloneNode(true));
+    this.attachShadow({ mode: "open" });
+    const bannerShadowDOM = this.shadowRoot;
+    this.template.innerHTML = templateString(content["en"]["gov"]);
+    bannerShadowDOM.appendChild(this.template.content.cloneNode(true));
 
     this.render();
   }
@@ -217,40 +221,6 @@ class BannerComponent extends HTMLElement {
     // const content2 = this.template.content.cloneNode(true);
     // this.innerHTML = "";
     // this.append(content2);
-
-    // ? Set HTML dynamically.
-    this.innerHTML = templateString(content[locale][tld]);
-
-    // ? Simplified markup/template.
-    // ? We're generating template content dynamically, so no need for
-    // ? swapping smaller templates.
-    // const tldAndLocaleTemplates = Array.from(
-    //   this.querySelectorAll(
-    //     `template[data-locale="${locale}"][data-tld="${tld}"]`
-    //   )
-    // );
-    // tldAndLocaleTemplates.forEach((template) => {
-    //   template.outerHTML = template.innerHTML;
-    // });
-    // const invalidTldAndLocaleTemplates = Array.from(
-    //   this.querySelectorAll(`template[data-locale][data-tld]`)
-    // );
-    // invalidTldAndLocaleTemplates.forEach((template) => template.remove());
-    // const tldTemplates = Array.from(
-    //   this.querySelectorAll(`template[data-tld="${tld}"]`)
-    // );
-    // tldTemplates.forEach((tldTemplate) => {
-    //   tldTemplate.outerHTML = tldTemplate.innerHTML;
-    // });
-    // const localeTemplates = Array.from(
-    //   this.querySelectorAll(`template[data-locale="${locale}"]`)
-    // );
-    // localeTemplates.forEach((localeTemplate) => {
-    //   localeTemplate.outerHTML = localeTemplate.innerHTML;
-    // });
-    // Array.from(this.querySelectorAll("template")).forEach((template) =>
-    //   template.remove()
-    // );
   }
 
   static get observedAttributes() {
