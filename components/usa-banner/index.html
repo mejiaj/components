@@ -3,22 +3,20 @@
   <head>
     <title>Test</title>
     <meta charset="utf8">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.4.1/css/uswds.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.4.1/js/uswds-init.min.js"></script>
-    <script src="banner.js"></script>
+    <script src="banner.js" type="module"></script>
   </head>
   <body>
-    <usa-banner tld="gov" locale="en"></usa-banner>
+    <usa-banner tld="gov" locale="en">
+      <!--
+      <span slot="banner-header-text">Unofficial custom banner text.</span>
+      <span slot="banner-action">Check it out!</span>
+      -->
+    </usa-banner>
     <p>
       An example of USA Banner using shadowDOM (required to use the <code>&lt;slot&gt;</code> element).
     </p>
     <!-- <usa-banner tld="gov" locale="es"></usa-banner> -->
     <!-- <usa-banner tld="mil" locale="en"></usa-banner> -->
     <!-- <usa-banner tld="mil" locale="es"></usa-banner> -->
-
-    <!-- @TODO: Test with 3.5.0 for Banner/Accordion init issue -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.4.1/js/uswds.min.js"></script>
   </body>
 </html>

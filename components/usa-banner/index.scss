@@ -1,0 +1,19 @@
+// @forward "@uswds/uswds/packages";
+// @forward "../../node_modules/@uswds/uswds/packages";
+// @use "@uswds/uswds/_index.scss" as *;
+
+// @use "../../node_modules/@uswds/uswds/packages/uswds/_index.scss" as *;
+
+//
+// Now that we have our `vite.config.js`, let's try to import USWDS.
+//
+
+// @use "@uswds/uswds/packages/uswds/index.scss" as *;
+// @use "@uswds/uswds/scss/uswds" as *;
+// @use "@uswds/uswds/packages/usa-banner/index" as *;
+
+@forward "../../node_modules/@uswds/uswds/packages/usa-banner/index";
+
+// body {
+// background-color: color("primary");
+// }

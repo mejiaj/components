@@ -1,82 +1,26 @@
-const content = {
-  en: {
-    // ? Using "default" here requires us to map "gov" --> "default".
-    gov: {
-      banner: {
-        id: "gov-banner-default",
-        text: "An official website of the United States government",
-        action: "Here’s how you know",
-        aria_label: "Official website of the United States government",
-      },
-      domain: {
-        heading: "Official websites use .gov",
-        text: "A <strong>.gov</strong> website belongs to an official government organization in the United States.",
-      },
-      https: {
-        heading: "Secure .gov websites use HTTPS",
-        pretext: "A <strong>lock</strong>",
-        posttext:
-          "or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.",
-      },
-    },
-    mil: {
-      banner: {
-        id: "gov-banner-dot-mil",
-        text: "An official website of the United States government",
-        action: "Here’s how you know",
-        aria_label: "Official website of the United States government,",
-      },
-      domain: {
-        heading: "Official websites use .mil",
-        text: "A <strong>.mil</strong> website belongs to an official U.S. Department of Defense organization.",
-      },
-      https: {
-        heading: "Secure .mil websites use HTTPS",
-        pretext: "A <strong>lock</strong>",
-        posttext:
-          "or <strong>https://</strong> means you’ve safely connected to the .mil website. Share sensitive information only on official, secure websites.",
-      },
-    },
-  },
-  es: {
-    gov: {
-      banner: {
-        id: "gov-banner-lang-es",
-        text: "Un sitio oficial del Gobierno de Estados Unidos",
-        action: "Así es como usted puede verificarlo",
-        aria_label: "Un sitio oficial del Gobierno de Estados Unidos",
-      },
-      domain: {
-        heading: "Los sitios web oficiales usan .gov",
-        text: "Un sitio web <strong>.gov</strong> pertenece a una organización oficial del Gobierno de Estados Unidos.",
-      },
-      https: {
-        heading: "Los sitios web seguros .gov usan HTTPS",
-        pretext: "Un <strong>candado</strong>",
-        posttext:
-          "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .gov.  Comparta información sensible sólo en sitios web oficiales y seguros.",
-      },
-    },
-    mil: {
-      banner: {
-        id: "gov-banner-dot-mil-lang-es",
-        text: "Un sitio oficial del Gobierno de Estados Unidos",
-        action: "Así es como usted puede verificarlo",
-        aria_label: "Un sitio oficial del Gobierno de Estados Unidos,",
-      },
-      domain: {
-        heading: "Los sitios web oficiales usan .mil",
-        text: "Un sitio web <strong>.mil</strong> pertenece a una organización oficial del Departamento de Defensa de EE. UU.",
-      },
-      https: {
-        heading: "Los sitios web seguros .mil usan HTTPS",
-        pretext: "Un <strong>candado</strong>",
-        posttext:
-          "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .mil.  Comparta información sensible sólo en sitios web oficiales y seguros.",
-      },
-    },
-  },
-};
+//? Vite will inline these styles by default.
+//? Won't work for web components, USWDS SASS, and ShadowDOM.
+// import "./index.scss";
+
+//? Avoid inline styles by using `?inline` parameter.
+// https://vitejs.dev/guide/features.html#css-pre-processors
+import bannerStyles from "./index.scss?inline";
+
+const bannerStylesheet = document.createElement("style");
+bannerStylesheet.textContent = bannerStyles;
+
+// ! Importing "@uswds/uswds" won't work; the default export is bundled JS.
+// import "@uswds/uswds";
+
+//! Because we use path aliases we can't easily import packages.
+//* Unknown how users are affected, this is a core dev enhancement.
+// import "@uswds/uswds/scss/uswds-fonts";
+// import "@uswds/uswds/scss/usa-banner";
+
+//! I can't call packages individually because it's not exported in USWDS.
+// import "@uswds/uswds/packages/usa-banner/_index.scss";
+
+import { default as content } from "./index.json";
 
 // @TODO: Check duplicate slot name `banner-action`.
 const templateString = (data) => {
