@@ -104,9 +104,11 @@ const templateString = (data) => {
             <p class="usa-banner__header-text">
               <slot name="banner-header-text">${banner.text}</slot>
             </p>
-            <p class="usa-banner__header-action">
-              <slot name="banner-action">${banner.action}</slot>
-            </p>
+            <slot name="banner-action">
+              <p class="usa-banner__header-action" slot="banner-action">
+                ${banner.action}
+              </p>
+            </slot>
           </div>
           <button
             type="button"
@@ -115,8 +117,8 @@ const templateString = (data) => {
             aria-controls="gov-banner-default-default"
           >
             <!-- Must be inline so chevron icon doesn't go to next line. -->
-            <span class="usa-banner__button-text">
-              <slot name="banner-action">${banner.action}</slot>
+            <span class="usa-banner__button-text" slot="banner-action">
+              ${banner.action}
             </span>
           </button>
         </div>
@@ -209,6 +211,7 @@ class BannerComponent extends HTMLElement {
     const bannerShadowDOM = this.shadowRoot;
     this.template.innerHTML = templateString(content["en"]["gov"]);
     bannerShadowDOM.appendChild(this.template.content.cloneNode(true));
+    bannerShadowDOM.appendChild(bannerStylesheet);
 
     this.render();
   }
