@@ -8,7 +8,7 @@ export const config: Config = {
       esmLoaderPath: '../loader',
     },
     {
-      type: 'dist-custom-elements-bundle',
+      type: 'dist-custom-elements',
     },
     {
       type: 'docs-readme',
@@ -18,4 +18,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  testing: {
+    browserHeadless: "new",
+  },
 };
