@@ -26,115 +26,12 @@
     elements, ex: <code>&lt;jm-button&gt;&lt;/jm-button&gt;</code>
   </p>
 
-  <h3>Styling</h3>
-  <p>
-    Currently buttons are being styled by CSS at the bottom of this template.
-  </p>
-
-  <hr>
-
-  <h2>Alert</h2>
-  <jm-alert id="alert-example-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veritatis sint nesciunt porro ullam error
-    perspiciatis atque voluptatum, deserunt est?
-  </jm-alert>
-
-  <style>
-    jm-alert#alert-example-1 {
-      outline: 4px solid orange !important;
-    }
-  </style>
-  <p>
-    We're using the shadowDOM, but you can see we can still add styles.
-  </p>
-
-  <h3>Slots</h3>
-  <p>
-    Let's add some named slots to our alert for more control.
-  </p>
-  <jm-alert id="example-2" info>
-    <h4 slot="title">Heads up</h4>
-    <div slot="body" class="body">
-      <p>Just a friendly reminder that your car is getting stolen.</p>
-    </div>
-  </jm-alert>
-
-  <!-- We could add a wrapping ".inner" and style it. -->
-  <!-- <style>
-    jm-alert .inner {
-      background: var(--blue-1);
-      padding: var(--size-4) var(--size-2);
-    }
-
-    jm-alert h4 {
-      margin: 0;
-    }
-  </style> -->
-
-  <h3>Styling w/ Custom Attributes</h3>
-  <jm-alert id="example-3" success>
-    <h4 slot="title">Success</h4>
-    <div slot="body" class="body">
-      <p>
-        Your car has been found.
-      </p>
-    </div>
-  </jm-alert>
-
-  <hr>
-
-  <h2>Image</h2>
-  <img is="smaller-img" src="https://placekitten.com/500/500" alt="A kitten">
-
-  <greeting-message name="James"></greeting-message>
-
-  <style>
-    /* Style the element */
-    /* jm-button {
-      background-color: var(--teal-8);
-      color: white;
-      padding: 0.25rem;
-    } */
-
-    /* Style by type of component */
-    /* [is="jm-button"] {
-      background-color: var(--violet-8);
-      color: white;
-      padding: 0.25rem;
-    } */
-
-    /* Style by class */
-    .jm-button {
-      all: unset;
-      background: var(--gradient-4);
-      font-weight: var(--font-weight-4);
-      color: black;
-      cursor: pointer;
-      display: inline-block;
-      line-height: 1;
-      font-size: 1rem;
-      padding: var(--size-2);
-    }
-
-    .jm-button:hover,
-    .jm-button:active {
-      background: var(--gradient-14);
-    }
-
-    .jm-button:focus {
-      outline: var(--size-1) solid var(--teal-4);
-    }
-  </style>
-
   <script>
     // const greeting = document.querySelector("greeting-message");
     // greeting.setAttribute("logout", true);
   </script>
 
   <script src="./components/button/index.js" type="module"></script>
-  <script src="./components/alert/index.js" type="module"></script>
-  <script src="./components/image/index.js" type="module"></script>
-  <script src="./components/greeting/index.js" type="module"></script>
 </body>
 
 </html>
