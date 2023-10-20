@@ -59,6 +59,27 @@
     </div>
   </jm-alert>
 
+  <!-- We could add a wrapping ".inner" and style it. -->
+  <!-- <style>
+    jm-alert .inner {
+      background: var(--blue-1);
+      padding: var(--size-4) var(--size-2);
+    }
+
+    jm-alert h4 {
+      margin: 0;
+    }
+  </style> -->
+
+  <h3>Styling w/ Custom Attributes</h3>
+  <jm-alert id="example-3" success>
+    <h4 slot="title">Success</h4>
+    <div slot="body" class="body">
+      <p>
+        Your car has been found.
+      </p>
+    </div>
+  </jm-alert>
 
   <hr>
 
