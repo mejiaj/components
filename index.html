@@ -26,12 +26,32 @@
     elements, ex: <code>&lt;jm-button&gt;&lt;/jm-button&gt;</code>
   </p>
 
-  <script>
-    // const greeting = document.querySelector("greeting-message");
-    // greeting.setAttribute("logout", true);
-  </script>
+  <h3>Styling</h3>
+  <p>
+    Currently buttons are being styled by CSS at the bottom of this template.
+  </p>
+
+  <hr>
+
+  <h2>Alert</h2>
+  <jm-alert id="alert-example-1">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veritatis sint nesciunt porro ullam error
+    perspiciatis atque voluptatum, deserunt est?
+  </jm-alert>
+
+  <style>
+    jm-alert#alert-example-1 {
+      outline: 4px solid orange !important;
+    }
+  </style>
+  <p>
+    We're using the shadowDOM, but you can see we can still add styles.
+  </p>
+
+
 
   <script src="./components/button/index.js" type="module"></script>
+  <script src="./components/alert/index.js" type="module"></script>
 </body>
 
 </html>
