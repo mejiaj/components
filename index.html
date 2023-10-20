@@ -48,7 +48,57 @@
     We're using the shadowDOM, but you can see we can still add styles.
   </p>
 
+  <h3>Slots</h3>
+  <p>
+    Let's add some named slots to our alert for more control.
+  </p>
+  <jm-alert id="example-2" info>
+    <h4 slot="title">Heads up</h4>
+    <div slot="body" class="body">
+      <p>Just a friendly reminder that your car is getting stolen.</p>
+    </div>
+  </jm-alert>
 
+
+  <hr>
+
+  <style>
+    /* Style the element */
+    /* jm-button {
+      background-color: var(--teal-8);
+      color: white;
+      padding: 0.25rem;
+    } */
+
+    /* Style by type of component */
+    /* [is="jm-button"] {
+      background-color: var(--violet-8);
+      color: white;
+      padding: 0.25rem;
+    } */
+
+    /* Style by class */
+    .jm-button {
+      all: unset;
+      background: var(--gradient-4);
+      font-weight: var(--font-weight-4);
+      color: black;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1;
+      font-size: 1rem;
+      padding: var(--size-2);
+    }
+
+    .jm-button:hover,
+    .jm-button:active {
+      background: var(--gradient-14);
+    }
+
+    .jm-button:focus {
+      outline: var(--size-1) solid var(--teal-4);
+    }
+  </style>
 
   <script src="./components/button/index.js" type="module"></script>
   <script src="./components/alert/index.js" type="module"></script>
