@@ -27,3 +27,11 @@ can use the [VS Code Live Server extension](https://marketplace.visualstudio.com
 
 1. **Button** is the most basic example and first web component.
 2. **Alert** is a slightly more advanced component that uses a custom stylesheet and slots.
+
+### Related branches
+
+1. `native-components` [main]
+1. `native-components-00`: Introduction to components.
+1. `native-components-01`: Initial alert example.
+1. `native-components-02`: Intermediate alert example.
+1. `native-components-03`: Advanced alert example.
